@@ -1,0 +1,92 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
+
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+}
+nav{
+  overflow-x: hidden;
+  position: absolute;
+}
+
+.navbar-brand img{
+    width: 300px;
+    height: 75px;
+}
+
+.nav-item{
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+li{
+    font-family:'Nunito', sans-serif;
+}
+.dropdown-menu{
+    background-color: #A8C867;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22;
+    font-weight: 700;
+    
+  
+}
+h2.title {
+  text-align: left;
+  color: #A8C867;
+  margin: 2em 0; 
+}
+
+.title-container {
+  text-align: left;
+  margin-right: 6em; 
+}
+
+  .btn{
+    margin-top: 2em;
+    margin-bottom: 4em;
+    background-color: #70991e;
+    color: white;
+    border-radius: 15.43px;
+    transition: 0.3s ease;
+  }
+  .btn:hover {
+    background-color: #A8C867;
+    color: white;
+  }
+  .map-space {
+    height: 100px; /* Puedes ajustar la altura según tus necesidades */
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #A8C867;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.footer-section {
+  text-align: left;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+}
+
+.logos img {
+  width: 30px; /* Ajusta según sea necesario */
+  margin-right: 10px; /* Ajusta según sea necesario */
+}

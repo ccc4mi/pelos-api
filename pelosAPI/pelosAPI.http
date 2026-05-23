@@ -1,0 +1,6 @@
+@pelosAPI_HostAddress = http://localhost:5209
+
+GET {{pelosAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

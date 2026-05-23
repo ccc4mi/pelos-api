@@ -1,0 +1,264 @@
+.body{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
+
+}
+.navbar-brand img{
+    width: 400px;
+    height: 75px;
+}
+.title{
+    color:#A8C867;
+    text-align:left;
+    vertical-align:text-top;
+    font-size:24px;
+    font-family: 'Montserrat', sans-serif;
+    line-height:auto;
+    border-style:hidden;
+    outline:none;
+    left:117px;
+    top:1048px;
+    width:1265px;
+    position: static;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    }
+    .writing{
+        padding-top: 5em;
+        padding-bottom: 5em;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 5em;
+    }
+.dropdown-menu{
+    background-color: #A8C867;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22;
+    font-weight: 700;
+}
+h1{
+    font-size: 56px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+h2{
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; 
+}
+
+.texto-uno{
+    color:#70991e;
+    text-align:left;
+    vertical-align:text-top;
+    font-size:24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    opacity: 1;
+    text-align: left;
+    line-height:auto;
+    border-style:hidden;
+    outline:none;
+    left:117px;
+    top:1048px;
+    width:1265px;
+    position: static;
+    }
+
+    .nav-item{
+        font-family: 'Nunito', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+    }
+    .card{
+        width: 265px;
+        border-radius: 35px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        color: white;
+        background-color: #A8C867;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        text-align: center;
+    }
+    .card-img-top{
+        border-top-right-radius: 35px;
+        border-top-left-radius: 35px;
+      }
+      .fondo1{
+        height: 100vh;
+        background-image: url("Assets/background/bg\ 1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .fondo1text{
+        color: white;
+        width: 50vw;
+        position: relative;
+        top: 44%;
+        left: 45%;
+    }
+
+    .fondo1text p{
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+.fondo2{
+        height: 100vh;
+        background-image: url("Assets/background/bg\ 2.jpg");
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    }
+
+    .fondo2text{
+        color: white;
+        width: 50vw;
+        position: relative;
+        top: 30%;
+        left: 7%;
+    }
+
+    .fondo2text p{
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+    .texto000{
+        color: #70991e;
+        margin-top: 7em;
+    }
+    footer{
+        background-color: #A8C867;
+        color: white;
+        font-family: 'Nunito', sans-serif;
+      }
+    
+      footer {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        line-height: 1.5;
+        padding: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      
+      footer > div {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+      }
+      
+      footer .logos {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; 
+        margin-top: 20px; 
+      }
+      
+      footer .logos img {
+        width: 100%;
+        padding: 3px;
+        margin: 0 15px; 
+      }
+      @media (max-width:600px)
+      {
+        *{
+            overflow-x: hidden;
+        }
+        .fondo1{
+        height: 90vh;
+        width: 100vw;
+        background-image:url("Assets/background/Vector_1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        }
+
+         .fondo1text{
+        color: white;
+        width: 100vw;
+        position: relative;
+        top: 20%;
+        left: 0%;
+        font-weight: bold;
+     }
+
+     .fondo1text h2{
+        font-size: 2.3em;
+        text-align: center;
+    }
+
+        .fondo1text p{
+            margin-top: 15px;
+            font-size: 1.6em;
+            text-align: center;
+        }
+
+
+    .fondo2{
+        height: 90vh;
+        width: 100vw;
+        background-image: url("Assets/background/Vector_1.png");
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    }
+
+    .fondo2text{
+        color: white;
+        width: 100vw;
+        position: relative;
+        top: 20%;
+        left: 0%;
+        font-weight: bold;
+    }
+
+    .fondo2text h2{
+        font-size: 2.3em;
+        text-align: center;
+    }
+
+
+    .fondo2text p{
+        margin-top: 25x;
+        font-size: 1.6em;
+        text-align: center;
+    }
+
+    footer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        line-height: 0.5;
+        padding: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        padding-left: 3em;
+      }
+    
+
+      .footer1{
+        display: none;
+      }
+
+        .banner img{
+          display: none;
+        }
+        .navbar-brand img{
+          max-width: 75%;
+          height: auto;
+          }
+          }
+      
