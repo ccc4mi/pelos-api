@@ -1,6 +1,6 @@
 # Pelos API
 
-Repositorio con una API básica en ASP.NET Core para gestionar productos de peluquería y una carpeta `pelosFront` con el frontend estático.
+Repositorio con una API básica en ASP.NET Core para gestionar productos de petshop y una carpeta `pelosFront` con el frontend estático.
 
 ## Estructura del repositorio
 
