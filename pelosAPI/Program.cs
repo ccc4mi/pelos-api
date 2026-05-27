@@ -15,11 +15,9 @@ builder.Services.AddCors(options =>
 });
 
 // Controladores
-
 builder.Services.AddControllers();
 
-//Base de datos
-
+// Base de datos
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=peluqueria.db"));
 
@@ -27,15 +25,26 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+// =======================================================================
+// Fuerza la creación de la Base de Datos y sus Tablas
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    context.Database.EnsureCreated(); // Si el archivo .db no existe o le faltan tablas, las crea de cero al arrancar
+}
+// =======================================================================
+
 // Configuración del pipeline de desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors("PermitirFrontend");
+
+app.UseStaticFiles(); // Para las imagenes
 
 app.MapControllers();
 

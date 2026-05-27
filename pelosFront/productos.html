@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pelos PetStyle</title>
+    <title>Pelos PetStyle - Productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="product.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&family=Nunito:wght@700&display=swap" rel="stylesheet">
-</head>
+    <style>
+      .badge-stock { font-size: 0.85rem; padding: 0.4em 0.6em; }
+    </style>
+  </head>
 <header>
-    <nav class="navbar navbar-expand-lg p-3 id=" style="background-color: #A8C867;">
+    <nav class="navbar navbar-expand-lg p-3" style="background-color: #A8C867;">
         <div class="container">
             <a class="navbar-brand" href="index.html">
               <img src="Assets/logo/Logo.png" alt="Logo" width="30" height="24">
@@ -38,6 +41,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" style="color: white;" href="contactanos.html">Contactanos</a>
+              </li>
             </ul>
           </div>
     </nav>
@@ -51,213 +55,93 @@
 
   <section class="texto-prod">
     <div>
-       <h2>
-        Productos
-       </h2>
+       <h2>Nuestro Catálogo</h2>
     </div>
   </section>
 
-  <div class="container">
-    <div class="row">
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod11.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body text-center">
-                    <p class="card-text">Cepillo Doble para Perros/Gatos</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod7.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Stick para gatos</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod8.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Plato doble</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
+  <!-- CATÁLOGO PÚBLICO -->
+  <div class="container mt-4 mb-5">
+    <div class="row" id="catalogo-container">
+        <!-- Las tarjetas se inyectan acá de forma automática -->
     </div>
-</div>
+  </div>
 
-<div class="container">
-    <div class="row">
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod2.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body text-center">
-                    <p class="card-text">Collar táctico de intervención</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod1.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Pretal H</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod5.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Sticks para perros</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod12.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body text-center">
-                    <p class="card-text">Plush puercoespín</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod9.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Cat roller</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod6.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Correa</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod4.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body text-center">
-                    <p class="card-text">Collar can/cat</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod10.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Pack 6 pelotas para gatos</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-
-        
-        <div class="col-md-4 mb-5">
-            <div class="card h-100 d-flex flex-column">
-                <img class="card-img-top" src="Assets/products/prod3.jpg" alt="Card image cap" style="width: 263px; height: 200px;">
-                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                    <p class="card-text">Pelota de Rugby
-                        can/cat</p>
-                    <button type="button" class="btn btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- MODAL DE COMPRA -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">¡Gracias por su compra!</h5>
-            <a href="productos.html" class="close" > x </a>
-            </a>
+                <h5 class="modal-title" id="exampleModalLabel">¡Gracias por su compra!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <p>Para retirar su producto dirijase a la sucursal más cercana.</p>
+                <p>Para retirar su producto dirijase a la sucursal más cercana.</p>
             </div>
             <div class="modal-footer">
-                <a href="productos.html" class="btn btn-cerrar"  data-dismiss="modal">Cerrar</a>
-                <a href="contactanos.html" class="btn">Sucursales</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="contactanos.html" class="btn text-white" style="background-color: #A8C867;">Sucursales</a>
             </div>
         </div>
     </div>
-</div>
+  </div>
 
+  <!-- SCRIPTS DE DEPENDENCIAS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <!-- config.js -->
+  <script src="config.js"></script>
 
+  <!-- LÓGICA DE RENDERIZADO CON LA API -->
+  <script>
+    
+    const API_URL = window.APP_CONFIG.PRODUCTOS_ENDPOINT;
+    const API_BASE = window.APP_CONFIG.API_BASE_URL;
+
+    document.addEventListener('DOMContentLoaded', cargarCatalogoPublico);
+    
+    async function cargarCatalogoPublico() {
+        const container = document.getElementById('catalogo-container');
+        container.innerHTML = '';
+
+        try {
+            const res = await fetch(API_URL);
+            if (!res.ok) throw new Error('Error en la respuesta de la API');
+            
+            const productos = await res.json();
+
+            if (productos.length === 0) {
+                container.innerHTML = `<div class="col-12 text-center my-5"><p class="text-muted fs-5">Por el momento no disponemos de artículos en stock.</p></div>`;
+                return;
+            }
+
+            productos.forEach(p => {
+                
+                const imgCompleta = `${API_BASE}/${p.imagenUrl}`;
+                
+                container.innerHTML += `
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100 d-flex flex-column shadow-sm">
+                            <img class="card-img-top" src="${imgCompleta}" alt="${p.nombre}" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+                                <p class="card-text mb-1" style="font-family: 'Nunito', sans-serif; font-size: 1.1rem;"><strong>${p.nombre}</strong></p>
+                                <p class="text-success mb-2 fw-bold fs-5">$${p.precio.toFixed(2)}</p>
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary badge-stock">Disponibles: ${p.stock} u.</span>
+                                </div>
+                                <button type="button" class="btn btn-block w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        } catch (error) {
+            console.error('Detalle del error:', error);
+            container.innerHTML = `<div class="col-12 text-center my-5"><div class="alert alert-danger">Error de conexión con la tienda.</div></div>`;
+        }
+    }
+  </script>
 </body>
-<footer>
-    <div>
-        <p>Ayuda</p>
-        <p>Terminos y Condiciones</p>
-        
-    </div>
-       <div>
-        <p>Seguinos en nuestras redes</p>
-        <div class="logos">
-            <a href="https://www.facebook.com/?locale=es_LA"><img src="Assets/icons/media/Facebook.png" alt="" style="width:40px ;height:40px"></a>
-            <a href="https://www.tiktok.com/es/"><img src="Assets/icons/media/tikTok.png" alt="" style="width:40px ;height:40px"></a>
-            <a href="https://www.instagram.com/"><img src="Assets/icons/media/Instagram.png" alt="" style="width:40px ;height:40px"></a>
-        </div>
-        
-    </div>
-        </footer>
 </html>

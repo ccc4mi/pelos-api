@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pelos PetStyle - Panel de Control</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="product.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <style>
+      .panel-admin { background-color: #f8f9fa; border-left: 4px solid #db3434; border-radius: 8px; }
+    </style>
+  </head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg p-3 navbar-dark bg-dark">
+      <div class="container">
+          <span class="navbar-brand fw-bold text-danger">🛡️ PANEL DE GESTIÓN INTERNA (ADMIN)</span>
+          <a href="productos.html" class="btn btn-sm btn-outline-light">Ver Vista Cliente</a>
+      </div>
+  </nav>
+
+  <!-- FORMULARIO CON CARGA DE IMAGEN -->
+  <div class="container mt-4 mb-4">
+    <div class="p-4 panel-admin shadow-sm">
+        <h4 class="mb-3" style="font-family: 'Montserrat', sans-serif;" id="form-title">⚙️ ABM de Artículos con Archivos</h4>
+        <form id="api-form" class="row g-3 align-items-end">
+            <input type="hidden" id="prod-id">
+            <div class="col-md-3">
+                <label for="prod-nombre" class="form-label fw-bold text-muted">Nombre del Artículo</label>
+                <input type="text" class="form-control" id="prod-nombre" required>
+            </div>
+            <div class="col-md-2">
+                <label for="prod-precio" class="form-label fw-bold text-muted">Precio ($)</label>
+                <input type="number" step="0.01" class="form-control" id="prod-precio" required>
+            </div>
+            <div class="col-md-2">
+                <label for="prod-stock" class="form-label fw-bold text-muted">Stock</label>
+                <input type="number" class="form-control" id="prod-stock" required>
+            </div>
+            <div class="col-md-3">
+                <label for="prod-imagen" class="form-label fw-bold text-muted">Imagen del Producto</label>
+                <input type="file" class="form-control" id="prod-imagen" accept="image/*">
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-danger w-100" id="btn-submit">Guardar</button>
+                <button type="button" class="btn btn-outline-secondary d-none" id="btn-cancelar" onclick="restablecerFormulario()">X</button>
+            </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="container mt-4 mb-5">
+    <div class="row" id="catalogo-container-admin"></div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://127.0.0.1:5209';
+    const API_URL = `${API_BASE}/api/Productos`;
+
+    document.addEventListener('DOMContentLoaded', cargarCatalogoAdmin);
+
+    async function cargarCatalogoAdmin() {
+        const container = document.getElementById('catalogo-container-admin');
+        container.innerHTML = '';
+
+        try {
+            const res = await fetch(API_URL);
+            const productos = await res.json();
+
+            productos.forEach(p => {
+                // La URL de la imagen apunta directo al servidor Kestrel de C#
+                const imgCompleta = `${API_BASE}/${p.imagenUrl}`;
+                container.innerHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm border-danger">
+                            <img class="card-img-top" src="${imgCompleta}" alt="${p.nombre}" style="width: 100%; height: 180px; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <p class="mb-1"><strong>${p.nombre}</strong></p>
+                                <p class="text-danger mb-1 fw-bold">$${p.precio.toFixed(2)}</p>
+                                <p class="small text-muted mb-2">Stock: ${p.stock} u.</p>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-sm btn-warning flex-grow-1" onclick="prepararEdicion(${p.id}, '${p.nombre}', ${p.precio}, ${p.stock})">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-danger flex-grow-1" onclick="eliminarProducto(${p.id})">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        } catch (error) {
+            container.innerHTML = `<div class="col-12 text-center"><div class="alert alert-danger">Error de conexión.</div></div>`;
+        }
+    }
+
+    document.getElementById('api-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const id = document.getElementById('prod-id').value;
+        const fileInput = document.getElementById('prod-imagen');
+
+        // Construimos el FormData Multiparte en vez de un JSON plano
+        const formData = new FormData();
+        formData.append('nombre', document.getElementById('prod-nombre').value);
+        formData.append('precio', document.getElementById('prod-precio').value);
+        formData.append('stock', document.getElementById('prod-stock').value);
+        
+        if (fileInput.files[0]) {
+            formData.append('imagen', fileInput.files[0]);
+        }
+
+        let url = API_URL;
+        let metodo = 'POST';
+
+        if (id) {
+            url = `${API_URL}/${id}`;
+            metodo = 'PUT'; // formulario de actualización
+        }
+
+        await fetch(url, {
+            method: metodo,
+            body: formData // contenedor con el archivo adentro sin cabecera JSON
+        });
+
+        restablecerFormulario();
+        cargarCatalogoAdmin();
+    });
+
+    async function eliminarProducto(id) {
+        if (confirm('¿Eliminar producto?')) {
+            await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+            cargarCatalogoAdmin();
+        }
+    }
+
+    function prepararEdicion(id, nombre, precio, stock) {
+        document.getElementById('prod-id').value = id;
+        document.getElementById('prod-nombre').value = nombre;
+        document.getElementById('prod-precio').value = precio;
+        document.getElementById('prod-stock').value = stock;
+        document.getElementById('btn-submit').innerText = 'Actualizar';
+        document.getElementById('btn-cancelar').classList.remove('d-none');
+    }
+
+    function restablecerFormulario() {
+        document.getElementById('api-form').reset();
+        document.getElementById('prod-id').value = '';
+        document.getElementById('btn-submit').innerText = 'Guardar';
+        document.getElementById('btn-cancelar').classList.add('d-none');
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,6 @@ namespace pelosAPI.Data
         {
         }
 
-        public DbSet<Producto> Productos { get; set; }
+        public DbSet<Producto> Productos { get; set; }= null!;
     }
 }

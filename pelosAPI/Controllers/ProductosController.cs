@@ -10,10 +10,12 @@ namespace pelosAPI.Controllers
     public class ProductosController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public ProductosController(AppDbContext context)
+        public ProductosController(AppDbContext context,IWebHostEnvironment env)
         {
             _context = context;
+            _env= env;
         }
 
         // GET: api/productos (Traer todos los productos)
@@ -25,75 +27,88 @@ namespace pelosAPI.Controllers
 
         // POST: api/productos (Alta de producto)
         [HttpPost]
-        public async Task<ActionResult<Producto>> PostProducto(Producto producto)
+        public async Task<ActionResult<Producto>> PostProducto([FromForm] string nombre, [FromForm] decimal precio, [FromForm] int stock, [FromForm] IFormFile? imagen)
         {
+            string folderPath = Path.Combine(_env.ContentRootPath, "wwwroot", "uploads");
+            if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
+
+            string fileUrl = "uploads/default.jpg"; // Imagen por defecto si no suben nada
+
+            if (imagen != null && imagen.Length > 0)
+            {
+                //nombre único para evitar que se pisen los archivos
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imagen.FileName);
+                string filePath = Path.Combine(folderPath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imagen.CopyToAsync(stream);
+                }
+                fileUrl = $"uploads/{fileName}";
+            }
+
+            var producto = new Producto
+            {
+                Nombre = nombre,
+                Precio = precio,
+                Stock = stock,
+                ImagenUrl = fileUrl
+            };
+
             _context.Productos.Add(producto);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetProductos), new { id = producto.Id }, producto);
         }
 
-        // PUT: api/productos/{id} (Modificación de producto)
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducto(int id, Producto producto)
+        public async Task<IActionResult> PutProducto(int id, [FromForm] string nombre, [FromForm] decimal precio, [FromForm] int stock, [FromForm] IFormFile? imagen)
         {
-            if (id != producto.Id)
-            {
-                return BadRequest();
-            }
+            var productoDb = await _context.Productos.FindAsync(id);
+            if (productoDb == null) return NotFound();
 
-            _context.Entry(producto).State = EntityState.Modified;
+            productoDb.Nombre = nombre;
+            productoDb.Precio = precio;
+            productoDb.Stock = stock;
 
-            try
+            // reemplazo si se sube nueva img
+            if (imagen != null && imagen.Length > 0)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Productos.Any(e => e.Id == id))
+                string folderPath = Path.Combine(_env.ContentRootPath, "wwwroot", "uploads");
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imagen.FileName);
+                string filePath = Path.Combine(folderPath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    return NotFound();
+                    await imagen.CopyToAsync(stream);
                 }
-                throw;
+                productoDb.ImagenUrl = $"uploads/{fileName}";
             }
 
-            return NoContent();
-        }
-
-        // DELETE: api/productos/{id} (Baja de producto)
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProducto(int id)
-        {
-            var producto = await _context.Productos.FindAsync(id);
-            if (producto == null)
-            {
-                return NotFound();
-            }
-
-            _context.Productos.Remove(producto);
+            _context.Entry(productoDb).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProducto(int id)
+        {
+            var producto = await _context.Productos.FindAsync(id);
+            if (producto == null) return NotFound();
 
-        // PATCH: api/productos/{id}/stock (Actualización parcial del stock)
+            _context.Productos.Remove(producto);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
         [HttpPatch("{id}/stock")]
         public async Task<IActionResult> PatchStock(int id, [FromBody] int nuevoStock)
         {
             var producto = await _context.Productos.FindAsync(id);
-            if (producto == null)
-            {
-                return NotFound();
-            }
-
-            if (nuevoStock < 0)
-            {
-                return BadRequest("El stock no puede ser un número negativo.");
-            }
+            if (producto == null) return NotFound();
 
             producto.Stock = nuevoStock;
-
             await _context.SaveChangesAsync();
             return NoContent();
         }
