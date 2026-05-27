@@ -44,6 +44,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("PermitirFrontend");
 
+app.UseDefaultFiles(); // Sirve index.html como archivo por defecto en la raíz
 app.UseStaticFiles(); // Para las imagenes
 
 app.MapControllers();
