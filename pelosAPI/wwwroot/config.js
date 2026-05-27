@@ -1,7 +1,7 @@
 // config.js - Archivo de configuración global del Frontend
 const CONFIG = {
-    // se cambia la url al pasar a produccion
-    API_BASE_URL: 'http://127.0.0.1:5209',
+    // Usa dinámicamente la URL actual del navegador en lugar de hardcodear localhost
+    API_BASE_URL: window.location.origin,
     
     // Rutas de los endpoints de la API
     get PRODUCTOS_ENDPOINT() {

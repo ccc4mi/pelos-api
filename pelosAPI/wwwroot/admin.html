@@ -57,7 +57,8 @@
   </div>
 
   <script>
-    const API_BASE = 'http://127.0.0.1:5209';
+    // Usa dinámicamente la URL actual del navegador en lugar de hardcodear localhost
+    const API_BASE = window.location.origin;
     const API_URL = `${API_BASE}/api/Productos`;
 
     document.addEventListener('DOMContentLoaded', cargarCatalogoAdmin);
