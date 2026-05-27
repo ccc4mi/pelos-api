@@ -38,9 +38,11 @@ Repositorio con una API básica en ASP.NET Core para gestionar productos de pets
    ```bash
    dotnet run
    ```
-3. La aplicación quedará disponible en `http://localhost:5209` (por defecto).
-4. El frontend cargará automáticamente al acceder a la URL raíz (`http://localhost:5209`).
-5. La API está disponible en `http://localhost:5209/api/productos`.
+3. La aplicación quedará disponible en `http://localhost:5209` (o en la URL/puerto configurado en tu entorno).
+4. El frontend cargará automáticamente al acceder a la URL raíz.
+5. La API está disponible en `/api/productos` desde cualquier URL base.
+
+**Nota:** El frontend se conecta automáticamente a la API usando `window.location.origin`, por lo que funciona tanto en `localhost` como en despliegues remotos.
 
 ## Notas
 
